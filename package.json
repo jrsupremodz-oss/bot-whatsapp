@@ -1,0 +1,14 @@
+{
+  "name": "whatsapp-mensual-bot",
+  "version": "1.0.0",
+  "description": "Bot de WhatsApp para comprobantes y códigos mensuales",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
+}
