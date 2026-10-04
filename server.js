@@ -6,10 +6,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // ==========================================
-// ⚙️ CONFIGURACIÓN DEL MENSAJE AUTOMÁTICO (CAMBIA ESTO CADA MES)
+// ⚙️ CONFIGURACIÓN DEL MENSAJE AUTOMÁTICO
 // ==========================================
-// Aquí escribes el texto que quieres que el bot le mande automáticamente al cliente 
-// en cuanto suba su foto de comprobante. Puedes incluir tu código, enlace, etc.
 const MENSAJE_RESPUESTA_AUTOMATICA = "¡Hola! Hemos recibido tu comprobante de pago correctamente. Tu código de acceso para este mes es: *ABRIL-2026-XYZ*. ¡Gracias!";
 
 // Variables de entorno de Meta (se configuran en Render)
@@ -39,6 +37,9 @@ app.get('/webhook', (req, res) => {
 
 // Ruta principal para recibir los mensajes y comprobantes de los clientes
 app.post('/webhook', async (req, res) => {
+    // Respondemos inmediatamente a Meta con 200 OK para evitar timeouts
+    res.sendStatus(200);
+
     try {
         const body = req.body;
 
@@ -61,19 +62,16 @@ app.post('/webhook', async (req, res) => {
                     }
                 }
             }
-            res.status(200).send('EVENT_RECEIVED');
-        } else {
-            res.sendStatus(404);
         }
     } catch (error) {
         console.error('Error procesando el webhook:', error.message);
-        res.sendStatus(500);
     }
 });
 
 // Función para enviar mensajes automáticos por WhatsApp Cloud API
 async function sendWhatsAppMessage(recipientID, textMessage) {
-    const url = `https://graph.facebook.com/v17.0/${PHONE_NUMBER_ID}/messages`;
+    // Actualizado a v25.0 que es la versión actual y compatible con la plataforma
+    const url = `https://graph.facebook.com/v25.0/${PHONE_NUMBER_ID}/messages`;
 
     const data = {
         messaging_product: 'whatsapp',
@@ -91,7 +89,7 @@ async function sendWhatsAppMessage(recipientID, textMessage) {
         const response = await axios.post(url, data, { headers });
         console.log(`Respuesta automática enviada con éxito a ${recipientID}:`, response.data);
     } catch (error) {
-        console.error('Error al enviar el mensaje de WhatsApp:', error.response?.data || error.message);
+        console.error('Error al enviar el mensaje de WhatsApp:', error.response?.data || JSON.stringify(error.response?.data) || error.message);
     }
 }
 
