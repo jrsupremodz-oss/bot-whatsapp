@@ -12,7 +12,7 @@ const MENSAJE_RESPUESTA_AUTOMATICA = "¡Hola! Hemos recibido tu comprobante de p
 
 // Variables de entorno de Meta (se configuran en Render)
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'mi_clave_secreta_123';
-const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN || 'EAAO5MYi1Qf0BSufBrpngIU1S6FSuynnOmZBYjcjNay6eK34oFUIS99JaAyfW1vJSZAs316AvZAuOmFM3Tca8kOgvYop5Vh3zqZBboMIRUZCPZBvj8TekE5rXgPOfXKj8I3ZAqP3yZAZBL23jDnOJFxLGUEAUP0Jd3aMvXaWpVdqE8zxWruacZBOZBUCh6bLjfbAf7fwRMPVFG76JbmZATMkpseYY8pkBc0zgsWZBsaZC2PsPO9Xua3LUvxwOZB2J7z73imsp3ZBprumyF8ZBb5IPAMvO2Kp9I';
+const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN || 'EAAO5MYi1Qf0BSj8VbrYYb1mhxDZCy64dnothU2Jj19xHfYSIvfeclFhoOqh3Pek1Te6jnWGDMBwnHxNVpnjYCvpqSAXJUsZCnxZB1DZCb1sAAUisaaSx4FTz6N9ayYcQXvTw7QuOQ9iBPvffHilIZBGCVKACEvOlSKzAcK7bgSQfu70HTJWGeeaqjF5FoZCZAiPUyIzaTc56zKBlzDTAeVGGiqOxuZBy0wEOMbEGMHKqlricjSoyRme07cKMn8Fo9IsUy2X0re3qN1WZAArSbBBPP';
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID || '1317182764817421';
 const PORT = process.env.PORT || 3000;
 
